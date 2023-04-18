@@ -1,4 +1,5 @@
 import { OpenAIModel } from './openai';
+import { MemoryVector } from './memoryVector';
 
 export interface Message {
   role: Role;
@@ -23,4 +24,14 @@ export interface Conversation {
   prompt: string;
   temperature: number;
   folderId: string | null;
+}
+
+export interface ChatQABody extends ChatBody {
+  vectorStore: MemoryVector[];
+}
+
+export interface MessageToSendBody {
+  model: OpenAIModel;
+  messages: Message[];
+  prompt: string;
 }

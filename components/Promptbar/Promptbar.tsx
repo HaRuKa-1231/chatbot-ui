@@ -20,6 +20,8 @@ import { PromptbarInitialState, initialState } from './Promptbar.state';
 
 import { v4 as uuidv4 } from 'uuid';
 
+import {Filebar} from '../Filebar/Filebar';
+
 const Promptbar = () => {
   const { t } = useTranslation('promptbar');
 
@@ -144,6 +146,7 @@ const Promptbar = () => {
         handleCreateItem={handleCreatePrompt}
         handleCreateFolder={() => handleCreateFolder(t('New folder'), 'prompt')}
         handleDrop={handleDrop}
+        footerComponent={<Filebar />}
       />
     </PromptbarContext.Provider>
   );
