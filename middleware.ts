@@ -25,5 +25,7 @@ export function middleware(req: NextRequest) {
   }
 
   // ステータスは 200 なのであれだが middleware ではそれが手軽にできないので一旦許容
-  return NextResponse.json({ message: 'unauthorized' });
+  return NextResponse.json({
+    message: '社内から接続するかVPNに繋いでください / Please connect from inside the company or connect to a VPN'
+  });
 }
