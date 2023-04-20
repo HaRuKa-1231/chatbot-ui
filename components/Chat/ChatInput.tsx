@@ -5,7 +5,6 @@ import {
   IconPlayerStop,
   IconRepeat,
   IconSend,
-  IconFile,
 } from '@tabler/icons-react';
 import {
   KeyboardEvent,
@@ -20,7 +19,7 @@ import {
 import { useTranslation } from 'next-i18next';
 
 import { Message } from '@/types/chat';
-import { Plugin, PluginID } from '@/types/plugin';
+import { Plugin } from '@/types/plugin';
 import { Prompt } from '@/types/prompt';
 
 import HomeContext from '@/pages/api/home/home.context';
@@ -100,7 +99,7 @@ export const ChatInput = ({
 
     onSend({ role: 'user', content }, plugin);
     setContent('');
-    // setPlugin(null);
+    setPlugin(null);
 
     if (window.innerWidth < 640 && textareaRef && textareaRef.current) {
       textareaRef.current.blur();
@@ -286,7 +285,7 @@ export const ChatInput = ({
             onClick={() => setShowPluginSelect(!showPluginSelect)}
             onKeyDown={(e) => {}}
           >
-            {plugin ? (plugin.id === PluginID.GOOGLE_SEARCH ?  <IconBrandGoogle size={20} /> : <IconFile size={20}/>) : <IconBolt size={20} />}
+            {plugin ? <IconBrandGoogle size={20} /> : <IconBolt size={20} />}
           </button>
 
           {showPluginSelect && (

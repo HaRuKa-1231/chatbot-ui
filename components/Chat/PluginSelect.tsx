@@ -2,7 +2,7 @@ import { FC, useEffect, useRef } from 'react';
 
 import { useTranslation } from 'next-i18next';
 
-import { Plugin, PluginID, PluginList } from '@/types/plugin';
+import { Plugin, PluginList } from '@/types/plugin';
 
 interface Props {
   plugin: Plugin | null;
@@ -87,7 +87,7 @@ export const PluginSelect: FC<Props> = ({
             ChatGPT
           </option>
 
-          {PluginList.filter((plugin) => plugin.id === PluginID.CHAT_DOCUMENT).map((plugin) => (
+          {PluginList.map((plugin) => (
             <option
               key={plugin.id}
               value={plugin.id}
