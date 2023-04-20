@@ -4,9 +4,12 @@ import { PDFLoader } from "langchain/document_loaders/fs/pdf"
 import { MemoryVector } from "@/types/memoryVector";
 import { RecursiveCharacterTextSplitter } from "langchain/text_splitter";
 // Import the legacy build of PDF.js
+import * as pdfjs from "pdfjs-dist/legacy/build/pdf";
+pdfjs.GlobalWorkerOptions.workerSrc = "pdfjs-dist/legacy/build/pdf.worker.js";
+
 
 export const docFromPdf = async (filePath: string, originalName: string) => {
-  const loader = new PDFLoader(filePath, { pdfjs: () => import("pdfjs-dist/legacy/build/pdf.js") })
+  const loader = new PDFLoader(filePath)
   const docs = await loader.load()
   const splitter = new RecursiveCharacterTextSplitter({
     chunkSize: 2000,

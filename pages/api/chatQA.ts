@@ -1,7 +1,8 @@
 import { NextApiRequest, NextApiResponse } from 'next';
 import { DEFAULT_SYSTEM_PROMPT, DEFAULT_TEMPERATURE } from '@/utils/app/const';
 import { questionGeneratorTemplate, qaTemplate } from '@/utils/app/customPrompt';
-import { ChatQABody } from '@/types/chat';
+import { OpenAIError, OpenAIStream } from '@/utils/server';
+import { ChatQABody, Message } from '@/types/chat';
 import { ConversationalRetrievalQAChain, LLMChain, loadQAStuffChain } from "langchain/chains"
 import { ChatOpenAI } from "langchain/chat_models/openai"
 import { retrieverFromMemoryVectors } from '@/utils/server/createIndex';
